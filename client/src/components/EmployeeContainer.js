@@ -6,6 +6,7 @@ import SearchForm from "./SearchForm";
 import MemberList from "./MemberList";
 import Footer from "./Footer";
 import API from "../utils/API";
+import MemberContext from "../utils/MembersContext";
 import "./style.css";
 
 function EmployeeContainer() {
@@ -26,10 +27,10 @@ function EmployeeContainer() {
   useEffect(() => {
     const searchList = members.members
       .filter((item) =>
-      search.filter === ""
+        search.filter === ""
           ? true
           : item.gender.toLowerCase().trim() ===
-          search.filter.toLowerCase().trim()
+            search.filter.toLowerCase().trim()
       )
       .filter((item) =>
         search.search === ""
@@ -50,14 +51,14 @@ function EmployeeContainer() {
   return (
     <Wrapper>
       <Header />
-      <Main>
-        <SearchForm
-          search={search.search}
-          filter={search.filter}
-          handleSearchChange={handleSearchChange}
-        />
-        <MemberList results={results.results} />
-      </Main>
+      <MemberContext.Provider value={members}>
+        <Main>
+          <SearchForm
+            handleSearchChange={handleSearchChange}
+          />
+          <MemberList />
+        </Main>
+      </MemberContext.Provider>
       <Footer />
     </Wrapper>
   );

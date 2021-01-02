@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import "./style.css";
+import MemberContext from "../utils/MembersContext";
 
-function SearchForm(props) {
+function SearchForm({handleSearchChange}) {
+  const { search, filter } = useContext(MemberContext);
   return (
     <div className='container'>
       <div className='row'>
@@ -14,8 +17,8 @@ function SearchForm(props) {
               </div>
               <div className='col-sm-10'>
                 <input
-                  onChange={props.handleSearchChange}
-                  value={props.search}
+                  onChange={handleSearchChange}
+                  value={search}
                   name='search'
                   type='text'
                   className='form-control'
@@ -36,8 +39,8 @@ function SearchForm(props) {
               </div>
               <div className='col-sm-10'>
                 <select
-                  onChange={props.handleSearchChange}
-                  value={props.filter}
+                  onChange={handleSearchChange}
+                  value={filter}
                   name='filter'
                   className='form-control'
                   id='filter'

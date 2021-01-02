@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./style.css";
+import MemberContext from "../utils/MembersContext";
 
-function MemberList(props) {
+function MemberList() {
+  const { results } = useContext(MemberContext);
   return (
     <div className='container'>
       <div className='table-responsive'>
@@ -17,7 +19,7 @@ function MemberList(props) {
             </tr>
           </thead>
           <tbody>
-            {props.results.map((result, index) => (
+            {results.map((result, index) => (
               <tr key={index}>
                 <th scope='row'>{index}</th>
                 <td>{result.name.first}</td>
