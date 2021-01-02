@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-function Header(props) {
+function Footer(props) {
   return (
     <footer className='footer'>
       <div className='copyright-social-media'>
@@ -49,4 +49,4 @@ function Header(props) {
   );
 }
 
-export default Header;
+export default Footer;
