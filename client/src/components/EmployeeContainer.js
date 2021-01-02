@@ -6,7 +6,9 @@ import SearchForm from "./SearchForm";
 import MemberList from "./MemberList";
 import Footer from "./Footer";
 import API from "../utils/API";
-import MemberContext from "../utils/MembersContext";
+import MembersContext from "../utils/MembersContext";
+import ResultsContext from "../utils/ResultsContext";
+import SearchContext from "../utils/SearchContext";
 import "./style.css";
 
 function EmployeeContainer() {
@@ -20,6 +22,7 @@ function EmployeeContainer() {
       .then((res) => {
         setMembers({ members: res.data.results });
         setResults({ results: res.data.results });
+        console.log(res.data.results)
       })
       .catch((err) => console.log(err));
   }, []);
@@ -51,14 +54,16 @@ function EmployeeContainer() {
   return (
     <Wrapper>
       <Header />
-      <MemberContext.Provider value={members}>
-        <Main>
-          <SearchForm
-            handleSearchChange={handleSearchChange}
-          />
-          <MemberList />
-        </Main>
-      </MemberContext.Provider>
+      <MembersContext.Provider value={members}>
+        <ResultsContext.Provider value={results}>
+          <SearchContext.Provider value={search}>
+            <Main>
+              <SearchForm handleSearchChange={handleSearchChange} />
+              <MemberList />
+            </Main>
+          </SearchContext.Provider>
+        </ResultsContext.Provider>
+      </MembersContext.Provider>
       <Footer />
     </Wrapper>
   );

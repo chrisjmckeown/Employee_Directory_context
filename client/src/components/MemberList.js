@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import "./style.css";
-import MemberContext from "../utils/MembersContext";
+import ResultsContext from "../utils/ResultsContext";
 
 function MemberList() {
-  const { results } = useContext(MemberContext);
+  const { results } = useContext(ResultsContext);
   return (
     <div className='container'>
       <div className='table-responsive'>

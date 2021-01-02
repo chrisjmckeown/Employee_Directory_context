@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import "./style.css";
-import MemberContext from "../utils/MembersContext";
+import SearchContext from "../utils/SearchContext";
 
 function SearchForm({handleSearchChange}) {
-  const { search, filter } = useContext(MemberContext);
+  const { search, filter } = useContext(SearchContext);
   return (
     <div className='container'>
       <div className='row'>
